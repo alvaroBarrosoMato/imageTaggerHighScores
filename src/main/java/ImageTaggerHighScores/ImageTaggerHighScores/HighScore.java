@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 public class HighScore implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String name;
 	public int Points;
 	public String Date;
@@ -26,18 +30,6 @@ public class HighScore implements Serializable{
 				"    <td>\" + Date + \"</td>\n" + 
 				"    <td>\" + Cortes + \"</td>\n" + 
 				"  </tr>";
-	}
-	
-}
-class HighScores implements Serializable{
-	public List<HighScore> highScores;
-
-	public HighScores(List<HighScore> highScores) {
-		super();
-		this.highScores = highScores;
-	}
-
-	public HighScores() {
 	}
 	
 }
