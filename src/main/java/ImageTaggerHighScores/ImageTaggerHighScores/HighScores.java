@@ -18,4 +18,11 @@ public class HighScores implements Serializable{
 	public HighScores() {
 	}
 	
+//	public String toText() {
+//		String str = "";
+//		for(int i = 0; i<highScores.size(); i++) {
+//			str = str + highScores.get(i).name
+//		}
+//	}
+	
 }

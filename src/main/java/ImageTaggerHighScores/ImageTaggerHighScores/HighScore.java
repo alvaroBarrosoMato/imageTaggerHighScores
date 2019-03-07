@@ -1,6 +1,9 @@
 package ImageTaggerHighScores.ImageTaggerHighScores;
 
 import java.io.Serializable;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 import java.util.List;
 
 public class HighScore implements Serializable{
@@ -13,15 +16,15 @@ public class HighScore implements Serializable{
 	public String Date;
 	public int Cortes;
 	public long id;
-	public HighScore(String name, int points, String date, int cortes) {
+	public String mac;
+	
+	public HighScore(String name, int points, String date, int cortes, String Mac) {
 		super();
 		this.name = name;
 		Points = points;
 		Date = date;
 		Cortes = cortes;
-	}
-	public HighScore(long incrementAndGet) {
-		id = incrementAndGet;
+		mac = Mac;
 	}
 	public String toTable() {
 		return "<tr>\n" + 
@@ -33,4 +36,3 @@ public class HighScore implements Serializable{
 	}
 	
 }
-
