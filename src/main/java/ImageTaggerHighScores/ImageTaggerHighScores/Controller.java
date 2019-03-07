@@ -35,8 +35,7 @@ public class Controller {
 
 	@RequestMapping("/highscore")
     public List<HighScore> greeting(@RequestParam(value="name", defaultValue="World") String name) throws IOException, ClassNotFoundException {
-		String filename = "sprites/settings.ser";
-         
+		
         FileInputStream file = new FileInputStream(filename); 
         ObjectInputStream in = new ObjectInputStream(file);
         highScores = (List<HighScore>)in.readObject(); 
