@@ -22,23 +22,21 @@ public class Controller {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 	String filename;
-    List<HighScore> highScores;
+    HighScores highScores;
+    
     
     public Controller() {
     	filename = "highScores.ser";
-    	highScores = new ArrayList<HighScore>();
-    	highScores.add(new HighScore("a", 1, "c", 1));
-    	highScores.add(new HighScore("a", 1, "c", 1));
-    	highScores.add(new HighScore("a", 1, "c", 1));
-    	highScores.add(new HighScore("a", 1, "c", 1));
+    	highScores.highScores = new ArrayList<HighScore>();
+    	
 	}
 
 	@RequestMapping("/highscore")
-    public List<HighScore> greeting(@RequestParam(value="name", defaultValue="World") String name) throws IOException, ClassNotFoundException {
+    public HighScores greeting(@RequestParam(value="name", defaultValue="World") String name) throws IOException, ClassNotFoundException {
 		
         FileInputStream file = new FileInputStream(filename); 
         ObjectInputStream in = new ObjectInputStream(file);
-        highScores = (List<HighScore>)in.readObject(); 
+        highScores.highScores = (List<HighScore>)in.readObject(); 
         in.close(); 
         file.close(); 
         
@@ -47,7 +45,7 @@ public class Controller {
 	@PostMapping(path = "/highscore", consumes = "application/json", produces = "application/json")
 	public void addHighScore(@RequestBody HighScore hs) {
 		
-		highScores.add(hs);
+		highScores.highScores.add(hs);
 		
 		try {
 			FileOutputStream file = new FileOutputStream(filename); 
