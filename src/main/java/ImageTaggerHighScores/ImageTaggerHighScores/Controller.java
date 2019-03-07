@@ -41,6 +41,18 @@ public class Controller {
         
         return highScores;
     }
+	@RequestMapping("/delete")
+    public HighScores deleteList() throws IOException, ClassNotFoundException {
+		
+		FileOutputStream file = new FileOutputStream(filename); 
+		ObjectOutputStream out = new ObjectOutputStream(file);
+		highScores = new HighScores();
+        out.writeObject(highScores); 
+        out.close(); 
+        file.close(); 
+        
+        return highScores;
+    }
 	@PostMapping(path = "/highscore", consumes = "application/json", produces = "application/json")
 	public void addHighScore(@RequestBody HighScore hs) {
 		
