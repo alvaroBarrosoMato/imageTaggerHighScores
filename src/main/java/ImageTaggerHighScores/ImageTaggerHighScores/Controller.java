@@ -19,20 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
 	String filename;
     HighScores highScores;
     
     
     public Controller() {
     	filename = "highScores.ser";
+    	highScores = new HighScores();
     	highScores.highScores = new ArrayList<HighScore>();
     	
 	}
 
 	@RequestMapping("/highscore")
-    public HighScores greeting() throws IOException, ClassNotFoundException {
+    public HighScores greeting(@RequestParam(value="name", defaultValue="World") String name) throws IOException, ClassNotFoundException {
 		
         FileInputStream file = new FileInputStream(filename); 
         ObjectInputStream in = new ObjectInputStream(file);
