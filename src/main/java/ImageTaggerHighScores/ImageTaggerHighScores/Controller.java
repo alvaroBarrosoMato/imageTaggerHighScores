@@ -32,7 +32,7 @@ public class Controller {
 	}
 
 	@RequestMapping("/highscore")
-    public HighScores greeting(@RequestParam(value="name", defaultValue="World") String name) throws IOException, ClassNotFoundException {
+    public HighScores greeting() throws IOException, ClassNotFoundException {
 		
         FileInputStream file = new FileInputStream(filename); 
         ObjectInputStream in = new ObjectInputStream(file);
