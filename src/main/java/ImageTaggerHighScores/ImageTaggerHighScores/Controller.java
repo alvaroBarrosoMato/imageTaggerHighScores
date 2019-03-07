@@ -55,8 +55,11 @@ public class Controller {
     }
 	@PostMapping(path = "/highscore", consumes = "application/json", produces = "application/json")
 	public void addHighScore(@RequestBody HighScore hs) {
-		
-		highScores.highScores.add(hs);
+		if(highScores.highScores == null) {
+			highScores.highScores = new ArrayList<HighScore>();
+		}else {
+			highScores.highScores.add(hs);
+		}
 		
 		try {
 			FileOutputStream file = new FileOutputStream(filename); 
