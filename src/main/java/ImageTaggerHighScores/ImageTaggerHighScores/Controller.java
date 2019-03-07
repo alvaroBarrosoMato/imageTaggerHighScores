@@ -35,7 +35,7 @@ public class Controller {
 		
         FileInputStream file = new FileInputStream(filename); 
         ObjectInputStream in = new ObjectInputStream(file);
-        highScores.highScores = (List<HighScore>)in.readObject(); 
+        highScores = (HighScores)in.readObject(); 
         in.close(); 
         file.close(); 
         
